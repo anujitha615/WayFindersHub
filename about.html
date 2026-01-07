@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayFindersHub - About</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-map-marked-alt"></i>WayFindersHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trip.html"><i class="fas fa-route"></i> Trip Planner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="saved.html"><i class="fas fa-bookmark"></i> Saved Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1500&q=80') center/cover;">
+    <div class="container text-center text-white py-5">
+      <h1 class="display-4 fw-bold">Our Journey</h1>
+      <p class="lead">Empowering travelers with smart data and seamless planning since 2024.</p>
+    </div>
+  </div>
+
+  <main class="container my-5">
+    <div class="row g-5">
+      <div class="col-lg-8">
+        <h2 class="mb-4">Who We Are</h2>
+        <p>WayFindersHub started with a simple idea: traveling should be about the experience, not the stress of planning. We noticed that travelers often have to jump between multiple apps to find fuel, food, and safe routes. We decided to build a unified platform that brings everything together.</p>
+        
+        <div class="row mt-5">
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 bg-light h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
+                        <h5>Our Mission</h5>
+                        <p class="small">To simplify global travel by providing real-time, accurate, and accessible transit information to everyone, everywhere.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 bg-light h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-eye fa-3x text-primary mb-3"></i>
+                        <h5>Our Vision</h5>
+                        <p class="small">To become the world's most trusted travel companion, known for safety, reliability, and innovation in trip planning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-4 mb-3">Key Features</h3>
+        <div class="accordion" id="featuresAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#feat1">
+                Smart Route Optimization
+              </button>
+            </h2>
+            <div id="feat1" class="accordion-collapse collapse show" data-bs-parent="#featuresAccordion">
+              <div class="accordion-body">
+                Our proprietary algorithms suggest the fastest and safest paths, integrating current weather data and traffic flow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#feat2">
+                Emergency Integration
+              </button>
+            </h2>
+            <div id="feat2" class="accordion-collapse collapse" data-bs-parent="#featuresAccordion">
+              <div class="accordion-body">
+                We provide instant access to nearby hospitals, fire stations, and police services, ensuring you are never alone in an emergency.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Technology Partners</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>OpenStreetMap (Map Data)</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Nominatim (Geocoding)</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>WTTR.in (Weather Data)</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>OSRM (Routing Engine)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card bg-primary text-white shadow-sm">
+          <div class="card-body text-center">
+            <h5>Ready to explore?</h5>
+            <p>Start planning your next destination today.</p>
+            <a href="trip.html" class="btn btn-light">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="mt-5 pt-4 border-top">
+    <h2 class="text-center mb-5">Get in Touch</h2>
+    <div class="row justify-content-center g-4">
+        <div class="col-md-4">
+            <div class="card contact-card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="contact-icon-wrapper mb-3">
+                        <i class="fas fa-headset fa-2x"></i>
+                    </div>
+                    <h5>Customer Support</h5>
+                    <p class="text-muted small">Need help planning your trip? Our team is available 24/7.</p>
+                    <hr>
+                    <p class="mb-1"><i class="fas fa-phone-alt me-2 text-primary"></i>+91 8157819783</p>
+                    <p><i class="fas fa-envelope me-2 text-primary"></i>anujith615@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card contact-card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="contact-icon-wrapper mb-3">
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+                    </div>
+                    <h5>Headquarters</h5>
+                    <p class="text-muted small">Visit us at our main innovation hub.</p>
+                    <hr>
+                    <p class="mb-0">AJ Space, Punalur</p>
+                    <p>Kollam, Kerala, India 691333</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card contact-card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="contact-icon-wrapper mb-3">
+                        <i class="fas fa-briefcase fa-2x"></i>
+                    </div>
+                    <h5>Partnerships</h5>
+                    <p class="text-muted small">For hotel listings and vehicle rental collaborations.</p>
+                    <hr>
+                    <p class="mb-0"><strong>Business Hours:</strong></p>
+                    <p class="mb-0">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p class="mb-0">&copy; 2024 WayFindersHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="static/js/script.js"></script>
+</body>
+</html>

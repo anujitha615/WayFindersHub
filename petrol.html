@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayFindersHub - Petrol Pumps</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+   
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-map-marked-alt"></i>WayFindersHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trip.html"><i class="fas fa-route"></i> Trip Planner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="saved.html"><i class="fas fa-bookmark"></i> Saved Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="row mb-4">
+      <div class="col-12">
+        <h2 class="mb-4"><i class="fas fa-gas-pump"></i> Nearby Petrol Pumps</h2>
+      </div>
+    </div>
+    
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="petrol-search">
+          <h3 class="mb-4">Find Fuel Stations</h3>
+          <form>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label for="location" class="form-label">Your Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter your location">
+              </div>
+              <div class="col-md-3">
+                <label for="fuel-type" class="form-label">Fuel Type</label>
+                <select class="form-select" id="fuel-type">
+                  <option>Any</option>
+                  <option>Petrol</option>
+                  <option>Diesel</option>
+                  <option>Electric</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="radius" class="form-label">Search Radius</label>
+                <select class="form-select" id="radius">
+                  <option>5 km</option>
+                  <option>10 km</option>
+                  <option>25 km</option>
+                  <option>50 km</option>
+                </select>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-primary w-100">Find Stations</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="petrol-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="petrol-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div>
+              <h3 class="h5 mb-1">City Fuel Station</h3>
+              <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt"></i> 2.5 km away</p>
+            </div>
+          </div>
+          <div class="fuel-prices">
+            <div class="price-item">
+              <span>Petrol:</span>
+              <span>$3.45/L</span>
+            </div>
+            <div class="price-item">
+              <span>Diesel:</span>
+              <span>$3.20/L</span>
+            </div>
+          </div>
+          <button class="btn service-btn mt-3">Get Directions</button>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="petrol-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="petrol-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div>
+              <h3 class="h5 mb-1">Highway Fuel Stop</h3>
+              <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt"></i> 8.2 km away</p>
+            </div>
+          </div>
+          <div class="fuel-prices">
+            <div class="price-item">
+              <span>Petrol:</span>
+              <span>$3.35/L</span>
+            </div>
+            <div class="price-item">
+              <span>Diesel:</span>
+              <span>$3.15/L</span>
+            </div>
+          </div>
+          <button class="btn service-btn mt-3">Get Directions</button>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="petrol-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="petrol-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div>
+              <h3 class="h5 mb-1">Express Fuel Center</h3>
+              <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt"></i> 4.7 km away</p>
+            </div>
+          </div>
+          <div class="fuel-prices">
+            <div class="price-item">
+              <span>Petrol:</span>
+              <span>$3.50/L</span>
+            </div>
+            <div class="price-item">
+              <span>Diesel:</span>
+              <span>$3.25/L</span>
+            </div>
+          </div>
+          <button class="btn service-btn mt-3">Get Directions</button>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="petrol-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="petrol-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div>
+              <h3 class="h5 mb-1">Eco Fuel Point</h3>
+              <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt"></i> 3.1 km away</p>
+            </div>
+          </div>
+          <div class="fuel-prices">
+            <div class="price-item">
+              <span>Petrol:</span>
+              <span>$3.42/L</span>
+            </div>
+            <div class="price-item">
+              <span>Diesel:</span>
+              <span>$3.18/L</span>
+            </div>
+            <div class="price-item">
+              <span>Electric:</span>
+              <span>$0.45/kWh</span>
+            </div>
+          </div>
+          <button class="btn service-btn mt-3">Get Directions</button>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="petrol-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="petrol-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div>
+              <h3 class="h5 mb-1">24/7 Fuel Mart</h3>
+              <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt"></i> 5.3 km away</p>
+            </div>
+          </div>
+          <div class="fuel-prices">
+            <div class="price-item">
+              <span>Petrol:</span>
+              <span>$3.48/L</span>
+            </div>
+            <div class="price-item">
+              <span>Diesel:</span>
+              <span>$3.22/L</span>
+            </div>
+          </div>
+          <button class="btn service-btn mt-3">Get Directions</button>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="petrol-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="petrol-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div>
+              <h3 class="h5 mb-1">Quick Fill Station</h3>
+              <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt"></i> 6.8 km away</p>
+            </div>
+          </div>
+          <div class="fuel-prices">
+            <div class="price-item">
+              <span>Petrol:</span>
+              <span>$3.38/L</span>
+            </div>
+            <div class="price-item">
+              <span>Diesel:</span>
+              <span>$3.12/L</span>
+            </div>
+          </div>
+          <button class="btn service-btn mt-3">Get Directions</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-light text-center py-4 mt-5">
+    <div class="container">
+      <p>&copy; 2024 WayFindersHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

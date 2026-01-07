@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayFindersHub - Emergency Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+   
+   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1><i class="fas fa-map-marked-alt"></i> WayFindersHub</h1>
+      <p>Plan. Discover. Travel - All in one place</p>
+      
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="trip.html"><i class="fas fa-route"></i> Trip Planner</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="emergency.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="saved.html"><i class="fas fa-bookmark"></i> Saved Trips</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="emergency-header">
+        <h2 class="mb-2"><i class="fas fa-ambulance"></i> Emergency Services</h2>
+        <p class="mb-0">Quick access to emergency services along your route. Find hospitals, police stations, and emergency contacts.</p>
+      </div>
+      
+      <div class="emergency-contact mb-4">
+        <h3 class="mb-4"><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-ambulance"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Medical Emergency</h5>
+                <p class="mb-0">Dial <strong>102</strong> or <strong>112</strong></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Police</h5>
+                <p class="mb-0">Dial <strong>100</strong> or <strong>112</strong></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-fire-extinguisher"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Fire Department</h5>
+                <p class="mb-0">Dial <strong>101</strong> or <strong>112</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-road"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Roadside Assistance</h5>
+                <p class="mb-0">Dial <strong>1073</strong> (Highways)</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-women"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Women's Helpline</h5>
+                <p class="mb-0">Dial <strong>1091</strong> or <strong>112</strong></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-child"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Child Emergency</h5>
+                <p class="mb-0">Dial <strong>1098</strong> or <strong>112</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+          <div class="quick-action-btn" onclick="alert('Sharing your current location with emergency services...');">
+            <div>
+              <i class="fas fa-plus-circle fa-2x mb-2"></i>
+              <h5>Share My Location</h5>
+              <p class="small">Share your current location with emergency contacts</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="quick-action-btn" onclick="alert('Opening First Aid Guide...');">
+            <div>
+              <i class="fas fa-first-aid fa-2x mb-2"></i>
+              <h5>First Aid Guide</h5>
+              <p class="small">Step-by-step instructions for common emergencies</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="quick-action-btn" onclick="document.getElementById('serviceType').value = 'all'; filterServices();">
+            <div>
+              <i class="fas fa-map-marked-alt fa-2x mb-2"></i>
+              <h5>Nearest Services</h5>
+              <p class="small">Find the closest emergency services to your location</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="emergency-search">
+        <h3 class="mb-4">Find Emergency Services Along Your Route</h3>
+        <form id="emergencySearchForm" class="row g-3">
+          <div class="col-md-4">
+            <label for="currentLocation" class="form-label">Current Location</label>
+            <input type="text" class="form-control" id="currentLocation" placeholder="Your current location">
+          </div>
+          <div class="col-md-4">
+            <label for="destination" class="form-label">Destination</label>
+            <input type="text" class="form-control" id="destination" placeholder="Your destination">
+          </div>
+          <div class="col-md-4">
+            <label for="serviceType" class="form-label">Service Type</label>
+            <select class="form-select" id="serviceType">
+              <option value="all">All Emergency Services</option>
+              <option value="hospital">Hospitals & Medical</option>
+              <option value="police">Police Stations</option>
+              <option value="fire">Fire Stations</option>
+              <option value="pharmacy">Pharmacies</option>
+              <option value="clinic">Urgent Care Clinics</option>
+            </select>
+          </div>
+          <div class="col-12 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Find Services Along Route</button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="filter-section row g-3">
+        <div class="col-md-4">
+          <label for="radius" class="form-label">Search Radius</label>
+          <select class="form-select" id="radius">
+            <option value="5">5 km</option>
+            <option value="10" selected>10 km</option>
+            <option value="20">20 km</option>
+            <option value="50">50 km</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="openNow" class="form-label">Availability</label>
+          <select class="form-select" id="openNow">
+            <option value="all">All Services</option>
+            <option value="open">Open Now</option>
+            <option value="24h">24/7 Services</option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <button type="button" id="useCurrentLocation" class="btn btn-outline-primary w-100">
+            <i class="fas fa-location-arrow"></i> Use My Current Location
+          </button>
+        </div>
+      </div>
+      
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Searching for emergency services...</p>
+      </div>
+      
+      <div class="no-results" id="noResults">
+        <i class="fas fa-search fa-3x mb-3"></i>
+        <h4>No emergency services found</h4>
+        <p>Try adjusting your search criteria or expanding your search radius</p>
+      </div>
+      
+      <div id="serviceResults" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="mb-0">&copy; 2024 WayFindershub. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

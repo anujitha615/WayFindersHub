@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayFindersHub - Restaurants</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-map-marked-alt me-2"></i>WayFindersHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trip.html"><i class="fas fa-route me-1"></i> Trip Planner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="services.html"><i class="fas fa-concierge-bell me-1"></i> Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="saved.html"><i class="fas fa-bookmark me-1"></i> Saved Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold"><i class="fas fa-utensils me-2"></i>Discover Amazing Restaurants</h1>
+      <p class="lead">Find the perfect dining experience for your journey</p>
+    </div>
+  </div>
+
+  <main class="container my-4">
+    <section>
+      <h2 class="mb-4 section-title">Nearby Restaurants</h2>
+      
+      <div class="restaurant-search mb-5">
+        <h3 class="mb-4">Find Great Places to Eat</h3>
+        <form class="row g-3" id="restaurantSearchForm">
+          <div class="col-md-4">
+            <label for="location" class="form-label">Your Location</label>
+            <input type="text" class="form-control" id="location" placeholder="Enter your location">
+          </div>
+          <div class="col-md-3">
+            <label for="cuisine" class="form-label">Cuisine Type</label>
+            <select class="form-select" id="cuisine">
+              <option>Any</option>
+              <option>Italian</option>
+              <option>Chinese</option>
+              <option>Mexican</option>
+              <option>Indian</option>
+              <option>American</option>
+              <option>Japanese</option>
+              <option>Thai</option>
+              <option>French</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="radius" class="form-label">Search Radius</label>
+            <select class="form-select" id="radius">
+              <option>1 km</option>
+              <option>3 km</option>
+              <option>5 km</option>
+              <option>10 km</option>
+            </select>
+          </div>
+          <div class="col-md-2 d-flex align-items-end">
+            <button type="button" class="btn search-btn w-100" onclick="alert('Searching for restaurants...');">
+              <i class="fas fa-search me-1"></i> Find
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 restaurant-results" id="restaurantResults">
+        <div class="col">
+          <div class="card restaurant-card">
+            <div class="restaurant-image">
+              <img src="assets/la-bella.avif" alt="Italian Restaurant" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">La Bella Italia</h3>
+              <p class="cuisine-type">Authentic Italian Cuisine</p>
+              <p class="distance"><i class="fas fa-map-marker-alt me-1"></i> 1.2 km away</p>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i> 
+                4.5 (287 reviews)
+              </p>
+              <p class="price-range">$$ • Moderate</p>
+              <div class="action-buttons">
+                <button class="btn btn-view" onclick="alert('Viewing menu for La Bella Italia')"><i class="fas fa-book-open me-1"></i> View Menu</button>
+                <button class="btn btn-directions" onclick="alert('Getting directions to La Bella Italia')"><i class="fas fa-route me-1"></i> Get Directions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card restaurant-card">
+            <div class="restaurant-image">
+              <img src="assets/dragon-palace.avif" alt="Chinese Restaurant" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Dragon Palace</h3>
+              <p class="cuisine-type">Traditional Chinese Cuisine</p>
+              <p class="distance"><i class="fas fa-map-marker-alt me-1"></i> 0.8 km away</p>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> 
+                4.8 (156 reviews)
+              </p>
+              <p class="price-range">$$$ • Expensive</p>
+              <div class="action-buttons">
+                <button class="btn btn-view" onclick="alert('Viewing menu for Dragon Palace')"><i class="fas fa-book-open me-1"></i> View Menu</button>
+                <button class="btn btn-directions" onclick="alert('Getting directions to Dragon Palace')"><i class="fas fa-route me-1"></i> Get Directions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card restaurant-card">
+            <div class="restaurant-image">
+              <img src="assets/taco.avif" alt="Mexican Restaurant" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Taco Fiesta</h3>
+              <p class="cuisine-type">Authentic Mexican Cuisine</p>
+              <p class="distance"><i class="fas fa-map-marker-alt me-1"></i> 2.3 km away</p>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> 
+                4.6 (204 reviews)
+              </p>
+              <p class="price-range">$ • Inexpensive</p>
+              <div class="action-buttons">
+                <button class="btn btn-view" onclick="alert('Viewing menu for Taco Fiesta')"><i class="fas fa-book-open me-1"></i> View Menu</button>
+                <button class="btn btn-directions" onclick="alert('Getting directions to Taco Fiesta')"><i class="fas fa-route me-1"></i> Get Directions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card restaurant-card">
+            <div class="restaurant-image">
+              <img src="assets/gourmet.avif" alt="Fine Dining" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">The Gourmet Experience</h3>
+              <p class="cuisine-type">International Fusion</p>
+              <p class="distance"><i class="fas fa-map-marker-alt me-1"></i> 3.1 km away</p>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> 
+                4.9 (312 reviews)
+              </p>
+              <p class="price-range">$$$$ • Fine Dining</p>
+              <div class="action-buttons">
+                <button class="btn btn-view" onclick="alert('Viewing menu for The Gourmet Experience')"><i class="fas fa-book-open me-1"></i> View Menu</button>
+                <button class="btn btn-directions" onclick="alert('Getting directions to The Gourmet Experience')"><i class="fas fa-route me-1"></i> Get Directions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card restaurant-card">
+            <div class="restaurant-image">
+              <img src="assets/burger.avif" alt="Burger Restaurant" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Burger Heaven</h3>
+              <p class="cuisine-type">American Grill & Burgers</p>
+              <p class="distance"><i class="fas fa-map-marker-alt me-1"></i> 1.5 km away</p>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i> 
+                4.3 (198 reviews)
+              </p>
+              <p class="price-range">$ • Inexpensive</p>
+              <div class="action-buttons">
+                <button class="btn btn-view" onclick="alert('Viewing menu for Burger Heaven')"><i class="fas fa-book-open me-1"></i> View Menu</button>
+                <button class="btn btn-directions" onclick="alert('Getting directions to Burger Heaven')"><i class="fas fa-route me-1"></i> Get Directions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card restaurant-card">
+            <div class="restaurant-image">
+              <img src="assets/tokyo.avif" alt="Sushi Restaurant" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Tokyo Sushi Bar</h3>
+              <p class="cuisine-type">Authentic Japanese Sushi</p>
+              <p class="distance"><i class="fas fa-map-marker-alt me-1"></i> 2.7 km away</p>
+              <p class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> 
+                4.7 (225 reviews)
+              </p>
+              <p class="price-range">$$$ • Expensive</p>
+              <div class="action-buttons">
+                <button class="btn btn-view" onclick="alert('Viewing menu for Tokyo Sushi Bar')"><i class="fas fa-book-open me-1"></i> View Menu</button>
+                <button class="btn btn-directions" onclick="alert('Getting directions to Tokyo Sushi Bar')"><i class="fas fa-route me-1"></i> Get Directions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; 2024 WayFindersHub. All rights reserved.</p>
+      <div class="mt-2">
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

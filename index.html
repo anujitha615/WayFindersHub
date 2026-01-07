@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayFindersHub - Home</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <header style="background: url('assets/home-bg.avif') center/cover no-repeat;">
+    <div class="header-overlay"></div>
+    <div class="container header-content">
+      <div class="logo-section">
+        <div class="logo"><i class="fas fa-map-marked-alt"></i></div>
+      </div>
+      <h1 class="site-title">WayFindersHub</h1>
+      <p class="site-tagline">Plan. Discover. Travel - All in one place</p>
+      <div class="text-center">
+        <button class="cta-button" onclick="window.location.href='trip.html'">
+          <i class="fas fa-route me-2"></i>Start Planning Your Trip
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trip.html"><i class="fas fa-route"></i> Trip Planner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="saved.html"><i class="fas fa-bookmark"></i> Saved Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="hero-image" style="background: url('assets/test-bg.avif') center/cover no-repeat;">
+      <div class="hero-text">
+        <h2 class="display-5 fw-bold">Discover Your Next Adventure</h2>
+        <p class="lead">Plan the perfect trip with our comprehensive travel tools and services</p>
+      </div>
+    </div>
+    
+    <section>
+      <h2 class="text-center mb-4">Welcome to WayFindersHub</h2>
+      <p class="text-center lead mb-5">Your ultimate travel companion for seamless journey planning and exploration.</p>
+      
+      <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="window.location.href='trip.html'">
+            <div class="feature-icon"><i class="fas fa-route"></i></div>
+            <h3>Smart Trip Planning</h3>
+            <p>Get optimized routes with real-time traffic and weather considerations.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="navigateToServicePage('hotel.html')">
+            <div class="feature-icon"><i class="fas fa-hotel"></i></div>
+            <h3>Hotel Finder</h3>
+            <p>Discover the perfect accommodations with our curated hotel selection.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="navigateToServicePage('petrol.html')">
+            <div class="feature-icon"><i class="fas fa-gas-pump"></i></div>
+            <h3>Petrol Pumps</h3>
+            <p>Find nearby fuel stations along your route for worry-free travel.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="navigateToServicePage('restaurant.html')">
+            <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+            <h3>Restaurants</h3>
+            <p>Locate the best dining options near your location or destination.</p>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="text-center mb-4">Popular Destinations</h2>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="destination-card">
+            <img src="assets/bali.avif" alt="Bali, Indonesia" class="destination-img">
+            <div class="destination-content">
+              <h4>Bali, Indonesia</h4>
+              <p>Experience the perfect blend of culture, beaches, and nightlife in this tropical paradise.</p>
+              <button class="cta-button btn-sm">Explore</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="destination-card">
+            <img src="assets/paris.avif" alt="Paris, France" class="destination-img">
+            <div class="destination-content">
+              <h4>Paris, France</h4>
+              <p>Discover the city of lights with its iconic landmarks and world-class cuisine.</p>
+              <button class="cta-button btn-sm">Explore</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="destination-card">
+            <img src="assets/swiss.avif" alt="Swiss Alps" class="destination-img">
+            <div class="destination-content">
+              <h4>Swiss Alps</h4>
+              <p>Breathtaking mountain views and outdoor adventures await in this winter wonderland.</p>
+              <button class="cta-button btn-sm">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="weather-widget mx-auto" id="weatherWidget">
+        <h3 class="mb-3"><i class="fas fa-cloud-sun"></i> Current Weather</h3>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h4 id="weatherLocation">Detecting your location...</h4>
+            <div id="weatherDescription" class="mb-2">Loading weather data</div>
+            <div class="d-flex gap-3">
+              <div class="weather-detail">
+                <i class="fas fa-temperature-half"></i>
+                <span id="feelsLike">--°C</span>
+              </div>
+              <div class="weather-detail">
+                <i class="fas fa-droplet"></i>
+                <span id="humidity">--%</span>
+              </div>
+              <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="windSpeed">-- km/h</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="weather-temp" id="weatherTemp">--°C</div>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="text-center mt-5 mb-4">What Travelers Say</h2>
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <div class="testimonial-card">
+            <p class="testimonial-text">WayFindersHub made planning our family vacation so easy! The hotel recommendations were spot on, and the route planning saved us hours of driving.</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="John Smith" class="testimonial-avatar">
+              <div>
+                <h5 class="mb-0">John Smith</h5>
+                <small class="text-muted">Family Vacation to Bali</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="testimonial-card">
+            <p class="testimonial-text">The petrol pump locator feature was a lifesaver during our road trip. We never had to worry about running out of fuel in unfamiliar areas.</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="testimonial-avatar">
+              <div>
+                <h5 class="mb-0">Sarah Johnson</h5>
+                <small class="text-muted">Cross-Country Road Trip</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="mb-0">&copy; 2024 WayFindersHub. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
